@@ -1,16 +1,6 @@
-.container {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
 .card {
-
-    width: 100%;
-    height: 80vh;
+    width: 600px;
+    height: 40vh;
     padding: 10px;
 }
 
@@ -19,9 +9,3 @@
     height: 100%;
 }
 
-.list {
-    background-color: black;
-    width: 600px;
-    height: 80vh;
-
-}

@@ -42,13 +42,6 @@ export class MapBoxComponent implements OnInit {
 
       map.addControl(new Mapboxgl.FullscreenControl())
 
-  
-      map.addControl(
-        new MapboxDirections({
-        accessToken: Mapboxgl.accessToken
-        }),
-        'top-left'
-        );
       
     }
 
