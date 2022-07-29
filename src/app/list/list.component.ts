@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getChargingPoints();
-    // this.getChargingPoint(this.id);
+    this.getChargingPoint(this.id);
   }
 
   private getChargingPoints() {
