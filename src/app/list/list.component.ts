@@ -16,14 +16,14 @@ export class ListComponent implements OnInit {
   chargingList?: ChargingData[];
 
   ngOnInit(): void {
-    // this.getChargingPoints();
+    this.getChargingPoints();
     this.getChargingPoint(this.id);
   }
 
   private getChargingPoints() {
     this.chargingService.getChargingPoints().subscribe((response) => {
       this.chargingList = response;
-      console.log(response);
+      //console.log(response);
     }, (err) => {
       alert("Error fetching charging points.");
     })

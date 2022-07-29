@@ -5,10 +5,17 @@
         </div>
 
         <div class="row">
-            <div class="col-4" id="column-1">
+            <div class="col-2" id="column-1">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Operator">
+                    <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="ID">
+                </div>
+            </div>
+
+            <div class="col-4" id="column">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"></label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Operator">
                 </div>
             </div>
         </div>
@@ -17,14 +24,14 @@
             <div class="col-4" id="column-1">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Street">
+                    <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Street">
                 </div>
             </div>
 
             <div class="col-2" id="column">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="House Number">
+                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="House Number">
                 </div>
             </div>
         </div>
@@ -34,14 +41,14 @@
             <div class="col-1" id="column-1">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="Zip Code">
+                    <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Zip Code">
                 </div>
             </div>
 
             <div class="col-5" id="column">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="City">
+                    <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="City">
                 </div>
             </div>
         </div>
@@ -50,14 +57,14 @@
             <div class="col-3" id="column-1">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="Power">
+                    <input type="text" class="form-control" id="formGroupExampleInput7" placeholder="Power">
                 </div>
             </div>
 
             <div class="col-3" id="column">
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput7" placeholder="Number of Ports">
+                    <input type="text" class="form-control" id="formGroupExampleInput8" placeholder="Number of Ports">
                 </div>
             </div>
 
@@ -73,7 +80,7 @@
         </div>
     </div>
 
-    <div class="results">
+    <div class="results" *ngIf="chargingData && chargingList" >
         <table class="table">
             <thead class="table-light">
               <tr>
@@ -88,16 +95,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let i of [0,1,2,3,4,5]">
-                <th scope="row">{{ i }}</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-              </tr>
+                <tr *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]">
+                    <th scope="row">{{ chargingList[i].id }}</th>
+                    <td>{{ chargingList[i].operator }}</td>
+                    <td>{{ chargingList[i].street }}</td>
+                    <td>{{ chargingList[i].house_number }}</td>
+                    <td>{{ chargingList[i].zip_code }}</td>
+                    <td>{{ chargingList[i].city }}</td>
+                    <td>{{ chargingList[i].power }}</td>
+                    <td>{{ chargingList[i].number_ports }}</td>
+                </tr>
             </tbody>
           </table>
     </div>
