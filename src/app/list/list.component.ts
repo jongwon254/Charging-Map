@@ -12,12 +12,24 @@ export class ListComponent implements OnInit {
   constructor(private chargingService: ChargingService) { }
 
   id: number = 101907;
+  numberResult: number = 10
   chargingData?: ChargingData;
   chargingList?: ChargingData[];
 
   ngOnInit(): void {
     this.getChargingPoints();
     this.getChargingPoint(this.id);
+  }
+
+  goNext() {
+    this.numberResult += 10;
+  }
+
+  goBack() {
+    if(this.numberResult != 10) {
+      this.numberResult -= 10
+    }
+    
   }
 
   private getChargingPoints() {

@@ -81,6 +81,20 @@
     </div>
 
     <div class="results" *ngIf="chargingData && chargingList" >
+
+        <div class="pages">
+            <span>
+                Showing {{ numberResult }} of 30397
+            </span>
+            <div class="back">
+                <button (click)="goBack()" type="button" class="btn btn-outline-dark btn-sm">Show less</button>
+            </div>
+            <div class="next">
+                <button (click)="goNext()" type="button" class="btn btn-outline-dark btn-sm">Show more</button>
+            </div>
+            
+        </div>
+
         <table class="table">
             <thead class="table-light">
               <tr>
@@ -96,7 +110,7 @@
               </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]">
+                <tr *ngFor="let f of [].constructor(numberResult); let i = index">
                     <th scope="row">{{ chargingList[i].id }}</th>
                     <td>{{ chargingList[i].operator }}</td>
                     <td>{{ chargingList[i].street }}</td>

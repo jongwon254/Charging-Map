@@ -56,6 +56,16 @@ export class MapBoxComponent implements OnInit {
                 'properties': {
                   'title': 'Charging Point'
                 }
+              },
+              {
+                'type': 'Feature',
+                'geometry': {
+                  'type': 'Point',
+                  'coordinates': [7.77161, 49.443]
+                },
+                'properties': {
+                  'title': 'Charging Point'
+                }
               }
             ]
           }
@@ -72,7 +82,7 @@ export class MapBoxComponent implements OnInit {
             'Open Sans Semibold',
             'Arial Unicode MS Bold'
             ],
-            'text-offset': [0, 1.5],
+            'text-offset': [0, 0.5],
             'text-anchor': 'top'
           }
         })

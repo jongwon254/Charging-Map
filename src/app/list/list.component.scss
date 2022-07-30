@@ -42,8 +42,22 @@
     padding-top: 20px;
 }
 
+.pages {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 13px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .results {
     margin: 0;
     padding: 0;
     margin-left: 10px;
+}
+
+.back {
+    margin-left: 10px;
+    margin-right: 5px;
 }
