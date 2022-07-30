@@ -91,7 +91,8 @@
                 <th scope="col">Zip Code</th>
                 <th scope="col">City</th>
                 <th scope="col">Power</th>
-                <th scope="col">Number of Ports</th>
+                <th scope="col">Ports</th>
+                <th scope="col">Mark Position</th>
               </tr>
             </thead>
             <tbody>
@@ -104,6 +105,9 @@
                     <td>{{ chargingList[i].city }}</td>
                     <td>{{ chargingList[i].power }}</td>
                     <td>{{ chargingList[i].number_ports }}</td>
+                    <td>
+                        <button (click)="mark(chargingList[i].id)">Add</button>
+                    </td>
                 </tr>
             </tbody>
           </table>
