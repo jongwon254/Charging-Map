@@ -20,12 +20,6 @@ export class ListComponent implements OnInit {
     this.getChargingPoint(this.id);
   }
 
-  mark(id: number) {
-    const coordinates = [48.783333, 9.183333]
-    const newMarker = new GeoJSON(coordinates, "Test")
-    this.chargingService.createMarker(newMarker)
-  }
-
   private getChargingPoints() {
     this.chargingService.getChargingPoints().subscribe((response) => {
       this.chargingList = response;

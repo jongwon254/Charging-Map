@@ -20,4 +20,5 @@ export class ChargingService {
   getChargingPoints(): Observable<ChargingData[]> {
     return this.http.get<ChargingData[]>(environment.baseUrl)
   }
+
 }

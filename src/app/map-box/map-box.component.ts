@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as mapboxgl from 'mapbox-gl';
 import * as Mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
 
@@ -11,11 +12,8 @@ import { environment } from 'src/environments/environment';
 export class MapBoxComponent implements OnInit {
 
   constructor() { }
-  
 
   ngOnInit(): void {
-
-    
 
     (Mapboxgl as any).accessToken = environment.map_token;
     
@@ -42,11 +40,47 @@ export class MapBoxComponent implements OnInit {
 
       map.addControl(new Mapboxgl.FullscreenControl())
 
-      
-    }
+      map.on('load', () => {
 
-    
-    
+        map.addSource('markers', {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: [
+              {
+                'type': 'Feature',
+                'geometry': {
+                  'type': 'Point',
+                  'coordinates': [9.183333, 48.783333]
+                },
+                'properties': {
+                  'title': 'Charging Point'
+                }
+              }
+            ]
+          }
+        })
+  
+        map.addLayer({
+          'id': 'points',
+          'type': 'symbol',
+          'source': 'markers',
+          'layout': {
+            'icon-image':'car-15',
+            'text-field': ['get', 'title'],
+            'text-font': [
+            'Open Sans Semibold',
+            'Arial Unicode MS Bold'
+            ],
+            'text-offset': [0, 1.5],
+            'text-anchor': 'top'
+          }
+        })
+
+      })
+    }
   }
+
+  // <button (click)="mark(chargingList[i].id)">Add</button>
 
 }
