@@ -3,77 +3,76 @@
         <div class="row" id="title">
             Charging Point
         </div>
-
         <div class="row">
             <div class="col-2" id="column-1">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="ID">
+                    <label for="id" class="form-label"></label>
+                    <input #id type="text" class="form-control" id="id" placeholder="ID">
                 </div>
             </div>
 
             <div class="col-4" id="column">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Operator">
+                    <label for="operator" class="form-label"></label>
+                    <input type="text" class="form-control" id="operator" placeholder="Operator">
                 </div>
             </div>
         </div>
-
+    
         <div class="row">
             <div class="col-4" id="column-1">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput3" placeholder="Street">
+                    <label for="street" class="form-label"></label>
+                    <input type="text" class="form-control" id="street" placeholder="Street">
                 </div>
             </div>
 
             <div class="col-2" id="column">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput4" placeholder="House Number">
+                    <label for="houseNumber" class="form-label"></label>
+                    <input type="text" class="form-control" id="houseNumber" placeholder="House Number">
                 </div>
             </div>
         </div>
-        
-
+            
+    
         <div class="row">
             <div class="col-1" id="column-1">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput5" placeholder="Zip Code">
+                    <label for="zipCode" class="form-label"></label>
+                    <input type="text" class="form-control" id="zipCode" placeholder="Zip Code">
                 </div>
             </div>
 
             <div class="col-5" id="column">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput6" placeholder="City">
+                    <label for="city" class="form-label"></label>
+                    <input type="text" class="form-control" id="city" placeholder="City">
                 </div>
             </div>
         </div>
-
+    
         <div class="row">
             <div class="col-3" id="column-1">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput7" placeholder="Power">
+                    <label for="power" class="form-label"></label>
+                    <input type="text" class="form-control" id="power" placeholder="Power">
                 </div>
             </div>
 
             <div class="col-3" id="column">
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label"></label>
-                    <input type="text" class="form-control" id="formGroupExampleInput8" placeholder="Number of Ports">
+                    <label for="ports" class="form-label"></label>
+                    <input type="text" class="form-control" id="ports" placeholder="Number of Ports">
                 </div>
-            </div>
-
-            <div class="col-3" id="column-button">
-                <div class="mb-3">
-                    <input class="btn btn-success btn-lg" type="submit" value="Search">
-                </div>
+        </div>
+        
+        <div class="col-3" id="column-button">
+            <div class="mb-3">
+                <button class="btn btn-success btn-lg" (click)="getValues(id.value)">Search</button>
             </div>
         </div>
+    </div>
 
         <div class="row" id="title2">
             Results

@@ -11,7 +11,7 @@ export class ListComponent implements OnInit {
 
   constructor(private chargingService: ChargingService) { }
 
-  id: number = 101907;
+  id: number = 101906;
   numberResult: number = 10
   chargingData?: ChargingData;
   chargingList?: ChargingData[];
@@ -29,7 +29,11 @@ export class ListComponent implements OnInit {
     if(this.numberResult != 10) {
       this.numberResult -= 10
     }
-    
+  }
+
+  getValues(id: string) {
+    this.id = parseInt(id)
+    console.log(this.id)
   }
 
   private getChargingPoints() {
