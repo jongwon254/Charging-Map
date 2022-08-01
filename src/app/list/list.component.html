@@ -79,7 +79,7 @@
         </div>
     </div>
 
-    <div class="results" *ngIf="chargingData && chargingList" >
+    <div class="results" *ngIf="chargingList" >
 
         <div class="pages">
             <span>
@@ -109,6 +109,8 @@
               </tr>
             </thead>
             <tbody>
+
+            
                 <tr *ngFor="let f of [].constructor(numberResult); let i = index">
                     <th scope="row">{{ chargingList[i].id }}</th>
                     <td>{{ chargingList[i].operator }}</td>
@@ -122,6 +124,7 @@
                         <button type="button" class="btn btn-outline-success">Add Marker</button>
                     </td>
                 </tr>
+
             </tbody>
           </table>
     </div>

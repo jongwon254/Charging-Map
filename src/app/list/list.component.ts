@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getChargingPoints();
-    this.getChargingPoint(this.id);
+    //this.getChargingPoint(this.id);
   }
 
   goNext() {
@@ -32,9 +32,16 @@ export class ListComponent implements OnInit {
   }
 
   getValues(id: string) {
-    this.id = parseInt(id)
-    console.log(this.id)
+    this.deleteRow()
+    // get api with params and fill charginglist and numberresult
   }
+
+  deleteRow() {
+    this.chargingList?.splice(0, this.numberResult);
+    this.numberResult = 0
+    this.chargingList = []
+  }
+
 
   private getChargingPoints() {
     this.chargingService.getChargingPoints().subscribe((response) => {
