@@ -37,15 +37,24 @@ export class ListComponent implements OnInit {
     
   }
 
-  getValues(id: string) {
+  
+
+  getValues(id: string, city: string, power: string, ports: string) {
     this.deleteRow()
+    console.log(this.chargingList)
+    console.log(this.numberResult)
+    
+    this.searchChargingPoints(Number(id), city, Number(power), Number(ports))
+    console.log(this.chargingList)
+    console.log(this.numberResult)
+    //this.numberResult = 1
     // get api with params and fill charginglist and numberresult
   }
 
   deleteRow() {
     this.chargingList?.splice(0, this.numberResult);
     this.numberResult = 0
-    this.chargingList = []
+    //this.chargingList = []
   }
 
 
@@ -67,4 +76,19 @@ export class ListComponent implements OnInit {
     })
   }
 
+  private searchChargingPoints(id: number, city: string, power: number, ports: number) {
+    this.chargingService.searchChargingPoints(id, city, power, ports).subscribe((response) => {
+      this.chargingList = response;
+      console.log(response);
+      console.log(this.chargingList)
+      console.log(this.numberResult)
+      this.numberResult = 5
+      console.log(this.numberResult)
+    }, (err) => {
+      alert("Error fetching charging points.")
+    })
+  }
+  
 }
+
+
