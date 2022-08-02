@@ -40,6 +40,16 @@
 #column-button {
     padding-left: 0;
     padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+#reset_button {
+    margin-left: 15px;
+}
+
+#search_button {
+    margin-left: 30px;
 }
 
 .pages {

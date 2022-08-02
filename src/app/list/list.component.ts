@@ -31,6 +31,12 @@ export class ListComponent implements OnInit {
     }
   }
 
+  resetResults() {
+    this.numberResult = 10
+    this.getChargingPoints()
+    
+  }
+
   getValues(id: string) {
     this.deleteRow()
     // get api with params and fill charginglist and numberresult
