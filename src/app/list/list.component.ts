@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { ChargingData } from '../models/charging.model';
 import { ChargingService } from '../services/charging.service';
 
@@ -9,12 +9,14 @@ import { ChargingService } from '../services/charging.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private chargingService: ChargingService) { }
+  constructor(private chargingService: ChargingService, private changeDetector: ChangeDetectorRef) { }
 
   id: number = 101906;
   numberResult: number = 10
+  numberResultSearch: number = 10
   chargingData?: ChargingData;
   chargingList?: ChargingData[];
+  chargingListSearch?: ChargingData[];
 
   ngOnInit(): void {
     this.getChargingPoints();
@@ -31,22 +33,31 @@ export class ListComponent implements OnInit {
     }
   }
 
+  goNextSearch() {
+    this.numberResultSearch += 10;
+  }
+
+  goBackSearch() {
+    if(this.numberResultSearch != 10) {
+      this.numberResultSearch -= 10
+    }
+  }
+
   resetResults() {
     this.numberResult = 10
     this.getChargingPoints()
+    this.chargingListSearch?.splice(0, this.numberResultSearch);
+    this.numberResultSearch = 0
+    this.chargingListSearch = undefined
     
   }
 
   
-
-  getValues(id: string, city: string, power: string, ports: string) {
+  getValues(city: string) {
     this.deleteRow()
-    console.log(this.chargingList)
-    console.log(this.numberResult)
-    
-    this.searchChargingPoints(Number(id), city, Number(power), Number(ports))
-    console.log(this.chargingList)
-    console.log(this.numberResult)
+    console.log(this.chargingListSearch)
+    this.searchChargingPoints(city)
+    console.log(this.chargingListSearch)
     //this.numberResult = 1
     // get api with params and fill charginglist and numberresult
   }
@@ -54,7 +65,7 @@ export class ListComponent implements OnInit {
   deleteRow() {
     this.chargingList?.splice(0, this.numberResult);
     this.numberResult = 0
-    //this.chargingList = []
+    this.chargingList = undefined
   }
 
 
@@ -76,14 +87,13 @@ export class ListComponent implements OnInit {
     })
   }
 
-  private searchChargingPoints(id: number, city: string, power: number, ports: number) {
-    this.chargingService.searchChargingPoints(id, city, power, ports).subscribe((response) => {
-      this.chargingList = response;
+  private searchChargingPoints(city: string) {
+    this.chargingService.searchChargingPoints(city).subscribe((response) => {
+      this.chargingListSearch = response
+      //this.chargingListSearch = response
       console.log(response);
-      console.log(this.chargingList)
-      console.log(this.numberResult)
-      this.numberResult = 5
-      console.log(this.numberResult)
+      console.log(this.chargingListSearch)
+      this.changeDetector.detectChanges()
     }, (err) => {
       alert("Error fetching charging points.")
     })

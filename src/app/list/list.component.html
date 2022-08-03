@@ -69,7 +69,7 @@
         
         <div class="col-3" id="column-button">
             <div class="mb-3">
-                <button id="search_button" class="btn btn-success btn-lg" (click)="getValues(id.value, city.value, power.value, ports.value)">Search</button>
+                <button id="search_button" class="btn btn-success btn-lg" (click)="getValues(city.value)">Search</button>
             </div>
             <div class="mb-3">
                 <button id="reset_button" class="btn btn-warning btn-lg" (click)="resetResults()">Reset</button>
@@ -123,6 +123,56 @@
                     <td>{{ chargingList[i].city }}</td>
                     <td>{{ chargingList[i].power }}</td>
                     <td>{{ chargingList[i].number_ports }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-success">Add Marker</button>
+                    </td>
+                </tr>
+
+            </tbody>
+          </table>
+    </div>
+
+    <div class="results" *ngIf="chargingListSearch" >
+
+        <div class="pages">
+            <span>
+                Showing {{ numberResultSearch }} of 30397
+            </span>
+            <div class="back">
+                <button (click)="goBackSearch()" type="button" class="btn btn-outline-dark btn-sm">Show less</button>
+            </div>
+            <div class="next">
+                <button (click)="goNextSearch()" type="button" class="btn btn-outline-dark btn-sm">Show more</button>
+            </div>
+            
+        </div>
+
+        <table class="table">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Operator</th>
+                <th scope="col">Street</th>
+                <th scope="col">House Number</th>
+                <th scope="col">Zip Code</th>
+                <th scope="col">City</th>
+                <th scope="col">Power</th>
+                <th scope="col">Ports</th>
+                <th scope="col">Mark Position</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            
+                <tr *ngFor="let g of [].constructor(numberResultSearch); let i = index">
+                    <th scope="row">{{ chargingListSearch[i].id }}</th>
+                    <td>{{ chargingListSearch[i].operator }}</td>
+                    <td>{{ chargingListSearch[i].street }}</td>
+                    <td>{{ chargingListSearch[i].house_number }}</td>
+                    <td>{{ chargingListSearch[i].zip_code }}</td>
+                    <td>{{ chargingListSearch[i].city }}</td>
+                    <td>{{ chargingListSearch[i].power }}</td>
+                    <td>{{ chargingListSearch[i].number_ports }}</td>
                     <td>
                         <button type="button" class="btn btn-outline-success">Add Marker</button>
                     </td>

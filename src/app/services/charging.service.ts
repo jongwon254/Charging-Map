@@ -21,12 +21,12 @@ export class ChargingService {
     return this.http.get<ChargingData[]>(environment.baseUrl)
   }
 
-  searchChargingPoints(id: number, city: string, power: number, ports: number): Observable<ChargingData[]> {
+  searchChargingPoints(city: string): Observable<ChargingData[]> {
     return this.http.get<ChargingData[]>(environment.baseUrl
-       + "/search/?id=" + id 
-       + "&city=" + city
-       + "&power=" + power
-       + "&ports=" + ports )
+       + "/search/?city=" + city)
+       //+ "&city=" + city
+       //#+ "&power=" + power
+       //+ "&ports=" + ports )
   }
 
 }
