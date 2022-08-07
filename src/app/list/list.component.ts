@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   chargingData?: ChargingData;
   chargingList?: ChargingData[];
   chargingListSearch?: ChargingData[];
-  token = true;
+  search_length: number = 0;
 
   ngOnInit(): void {
     this.getChargingPoints();
@@ -35,11 +35,17 @@ export class ListComponent implements OnInit {
   }
 
   goNextSearch() {
-    this.numberResultSearch += 10;
+    if((this.numberResultSearch+10) <= this.search_length) {
+      this.numberResultSearch += 10;
+    } else {
+      this.numberResultSearch = this.search_length
+    }
   }
 
   goBackSearch() {
-    if(this.numberResultSearch != 10) {
+    if(this.numberResultSearch % 10 != 0) {
+      this.numberResultSearch -= (this.numberResultSearch % 10)
+    } else if(this.numberResultSearch != 10) {
       this.numberResultSearch -= 10
     }
   }
@@ -108,7 +114,12 @@ export class ListComponent implements OnInit {
       this.chargingListSearch = response
       console.log(response);
       console.log(this.chargingListSearch)
-      this.numberResultSearch = this.chargingListSearch!.length
+      this.search_length = this.chargingListSearch!.length
+      if(this.search_length <= 10) {
+        this.numberResultSearch = this.search_length
+      } else {
+        this.numberResultSearch = 10
+      }
       this.changeDetector.detectChanges()
     }, (err) => {
       alert("Error fetching charging points.")
@@ -120,7 +131,13 @@ export class ListComponent implements OnInit {
       this.chargingListSearch = response
       console.log(response);
       console.log(this.chargingListSearch)
-      this.numberResultSearch = this.chargingListSearch!.length
+
+      this.search_length = this.chargingListSearch!.length
+      if(this.search_length <= 10) {
+        this.numberResultSearch = this.search_length
+      } else {
+        this.numberResultSearch = 10
+      }
       this.changeDetector.detectChanges()
     }, (err) => {
       alert("Error fetching charging points.")
