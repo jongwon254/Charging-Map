@@ -43,9 +43,9 @@ export class ListComponent implements OnInit {
   }
 
   goBackSearch() {
-    if(this.numberResultSearch % 10 != 0) {
+    if(this.numberResultSearch % 10 != 0 && this.numberResultSearch >= 10) {
       this.numberResultSearch -= (this.numberResultSearch % 10)
-    } else if(this.numberResultSearch != 10) {
+    } else if(this.numberResultSearch > 10) {
       this.numberResultSearch -= 10
     }
   }
@@ -59,27 +59,26 @@ export class ListComponent implements OnInit {
     
   }
 
-  
-  getValues(city: string, house_number: string) {
+  // filtering 
+  getValues(id: string, city: string, power: string) {
     this.deleteRow()
     console.log(this.chargingListSearch)
-    
-    if(!house_number) {
+
+    // id search
+    if(!power && !city) {
+      this.getChargingPoint(Number(id))
+      // city search
+    } else if(!power) {
       this.searchChargingPointsCity(city)
       console.log("housenumber null")
+      // city + power search
     } else {
-      this.searchChargingPoints(city, house_number)
+      this.searchChargingPoints(city, Number(power))
       console.log("housenumber not null")
     }
-    
-    
-
 
     console.log(this.numberResultSearch)
-    
     console.log(this.chargingListSearch)
-    //this.numberResult = 1
-    // get api with params and fill charginglist and numberresult
   }
 
   deleteRow() {
@@ -88,13 +87,13 @@ export class ListComponent implements OnInit {
     this.chargingList = undefined
     this.numberResultSearch = 0
     this.chargingListSearch = undefined
+    this.chargingData = undefined
   }
 
 
   private getChargingPoints() {
     this.chargingService.getChargingPoints().subscribe((response) => {
       this.chargingList = response;
-      //console.log(response);
     }, (err) => {
       alert("Error fetching charging points.");
     })
@@ -104,13 +103,14 @@ export class ListComponent implements OnInit {
     this.chargingService.getChargingPoint(id).subscribe((response) => {
       this.chargingData = response;
       console.log(response);
+      this.changeDetector.detectChanges()
     }, (err) => {
       alert("Error fetching charging point.")
     }) 
   }
 
-  private searchChargingPoints(city: string, house_number: string) {
-    this.chargingService.searchChargingPoints(city, house_number).subscribe((response) => {
+  private searchChargingPoints(city: string, power: number) {
+    this.chargingService.searchChargingPoints(city, power).subscribe((response) => {
       this.chargingListSearch = response
       console.log(response);
       console.log(this.chargingListSearch)
