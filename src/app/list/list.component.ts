@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
   chargingData?: ChargingData;
   chargingList?: ChargingData[];
   chargingListSearch?: ChargingData[];
+  token = true;
 
   ngOnInit(): void {
     this.getChargingPoints();
@@ -53,10 +54,23 @@ export class ListComponent implements OnInit {
   }
 
   
-  getValues(city: string) {
+  getValues(city: string, house_number: string) {
     this.deleteRow()
     console.log(this.chargingListSearch)
-    this.searchChargingPoints(city)
+    
+    if(!house_number) {
+      this.searchChargingPointsCity(city)
+      console.log("housenumber null")
+    } else {
+      this.searchChargingPoints(city, house_number)
+      console.log("housenumber not null")
+    }
+    
+    
+
+
+    console.log(this.numberResultSearch)
+    
     console.log(this.chargingListSearch)
     //this.numberResult = 1
     // get api with params and fill charginglist and numberresult
@@ -66,6 +80,8 @@ export class ListComponent implements OnInit {
     this.chargingList?.splice(0, this.numberResult);
     this.numberResult = 0
     this.chargingList = undefined
+    this.numberResultSearch = 0
+    this.chargingListSearch = undefined
   }
 
 
@@ -84,15 +100,27 @@ export class ListComponent implements OnInit {
       console.log(response);
     }, (err) => {
       alert("Error fetching charging point.")
+    }) 
+  }
+
+  private searchChargingPoints(city: string, house_number: string) {
+    this.chargingService.searchChargingPoints(city, house_number).subscribe((response) => {
+      this.chargingListSearch = response
+      console.log(response);
+      console.log(this.chargingListSearch)
+      this.numberResultSearch = this.chargingListSearch!.length
+      this.changeDetector.detectChanges()
+    }, (err) => {
+      alert("Error fetching charging points.")
     })
   }
 
-  private searchChargingPoints(city: string) {
-    this.chargingService.searchChargingPoints(city).subscribe((response) => {
+  private searchChargingPointsCity(city: string) {
+    this.chargingService.searchChargingPointsCity(city).subscribe((response) => {
       this.chargingListSearch = response
-      //this.chargingListSearch = response
       console.log(response);
       console.log(this.chargingListSearch)
+      this.numberResultSearch = this.chargingListSearch!.length
       this.changeDetector.detectChanges()
     }, (err) => {
       alert("Error fetching charging points.")
