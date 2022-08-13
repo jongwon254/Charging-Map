@@ -11,6 +11,7 @@ export class ListComponent implements OnInit {
 
   constructor(private chargingService: ChargingService, private changeDetector: ChangeDetectorRef) { }
 
+  // variables 
   id: number = 101906;
   numberResult: number = 10
   numberResultSearch: number = 10
@@ -19,11 +20,13 @@ export class ListComponent implements OnInit {
   chargingListSearch?: ChargingData[];
   search_length: number = 0;
 
+  // initialize results with all charging points
   ngOnInit(): void {
     this.getChargingPoints();
     //this.getChargingPoint(this.id);
   }
 
+  // Show more/Show less buttons
   goNext() {
     this.numberResult += 10;
   }
@@ -50,6 +53,7 @@ export class ListComponent implements OnInit {
     }
   }
 
+  // Reset filtered results and show all charging points
   resetResults() {
     this.numberResult = 10
     this.getChargingPoints()
@@ -81,6 +85,7 @@ export class ListComponent implements OnInit {
     console.log(this.chargingListSearch)
   }
 
+  // helper method to clear results table
   deleteRow() {
     this.chargingList?.splice(0, this.numberResult);
     this.numberResult = 0
@@ -91,6 +96,9 @@ export class ListComponent implements OnInit {
   }
 
 
+  // Fetching API with ChargingService
+
+  // Get all charging points
   private getChargingPoints() {
     this.chargingService.getChargingPoints().subscribe((response) => {
       this.chargingList = response;
@@ -99,6 +107,7 @@ export class ListComponent implements OnInit {
     })
   }
 
+  // Get charging point with ID
   private getChargingPoint(id: number) {
     this.chargingService.getChargingPoint(id).subscribe((response) => {
       this.chargingData = response;
@@ -109,6 +118,7 @@ export class ListComponent implements OnInit {
     }) 
   }
 
+  // Search for charging points
   private searchChargingPoints(city: string, power: number) {
     this.chargingService.searchChargingPoints(city, power).subscribe((response) => {
       this.chargingListSearch = response
@@ -126,6 +136,7 @@ export class ListComponent implements OnInit {
     })
   }
 
+  // Search for charging points
   private searchChargingPointsCity(city: string) {
     this.chargingService.searchChargingPointsCity(city).subscribe((response) => {
       this.chargingListSearch = response

@@ -1,3 +1,5 @@
+// Database model 
+
 export interface ChargingData {
     id: number,
     operator: string,

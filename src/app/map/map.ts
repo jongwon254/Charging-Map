@@ -1,3 +1,5 @@
+// Component for GeoJSON Markers
+
 export interface IGeometry {
     type: string;
     coordinates: number[];

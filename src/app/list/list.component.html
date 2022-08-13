@@ -1,5 +1,7 @@
+<!-- List Component with Search and Result Table-->
 <div class="list">
     <div class="container text-center">
+        <!-- Search Formular -->
         <div class="row" id="title">
             Charging Point
         </div>
@@ -77,11 +79,13 @@
         </div> 
     </div>
 
+        <!-- Results -->
         <div class="row" id="title2">
             Results
         </div>
     </div>
 
+    <!-- For getting all results -->
     <div class="results" *ngIf="chargingList" >
 
         <div class="pages">
@@ -132,6 +136,7 @@
           </table>
     </div>
 
+    <!-- For getting filtered resulsts -->
     <div class="results" *ngIf="chargingListSearch" >
 
         <div class="pages">
@@ -182,6 +187,7 @@
           </table>
     </div>
 
+    <!-- For getting a single result object -->
     <div class="results" *ngIf="chargingData" >
 
         <div class="pages">

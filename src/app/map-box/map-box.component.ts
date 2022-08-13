@@ -9,14 +9,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./map-box.component.scss']
 })
 
+// create instance of MapBox
 export class MapBoxComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
 
+    // MapBox Auth Token
     (Mapboxgl as any).accessToken = environment.map_token;
     
+    // Get current location in browser
     navigator.geolocation.getCurrentPosition(successLocation, errorLocation, { enableHighAccuracy: true })
 
     function successLocation(position: any) {
@@ -28,6 +31,7 @@ export class MapBoxComponent implements OnInit {
       setupMap([9.183333, 48.783333])
     }
 
+    // Setup map and add navigation controls
     function setupMap(center: [number, number]) {
       const map = new Mapboxgl.Map({
         container: 'map',
@@ -43,7 +47,4 @@ export class MapBoxComponent implements OnInit {
       
     }
   }
-
-  // <button (click)="mark(chargingList[i].id)">Add</button>
-
 }

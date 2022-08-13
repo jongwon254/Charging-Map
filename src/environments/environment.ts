@@ -2,6 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// environment variables (mapbox auth token and API base url)
 export const environment = {
   production: false,
   map_token: 'pk.eyJ1Ijoiam9uZ3dvbjI1NCIsImEiOiJjbDY1NHU2djYwMmo2M2NxZzZ1eDlzN2J5In0.0zMLYprMNLjpx8aOek0MbQ',
