@@ -60,6 +60,7 @@ export class ListComponent implements OnInit {
     this.chargingListSearch?.splice(0, this.numberResultSearch);
     this.numberResultSearch = 0
     this.chargingListSearch = undefined
+    this.chargingData = undefined
     
   }
 
