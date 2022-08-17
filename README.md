@@ -24,6 +24,9 @@ Charging Map to search and view charging points of Germany provided by an [own R
 
 ## Screenshots
 <img width="1209" alt="charging" src="https://user-images.githubusercontent.com/36485235/185095453-75143708-2f00-4020-837e-a514e53f9751.png">
+<img width="1265" alt="map2copy" src="https://user-images.githubusercontent.com/36485235/185096449-705938ff-454f-4d87-a2e9-c96714004d67.png">
+<img width="400" alt="search2" src="https://user-images.githubusercontent.com/36485235/185095889-c50f12f7-6b4c-4da2-94b8-79634e9f5c92.png">
+<img width="810" alt="results3" src="https://user-images.githubusercontent.com/36485235/185096134-ef05eed4-034c-4b8b-8698-60c4cfc842f0.png">
 
 ## More Info
 [Visit Website](https://jongwonlee.dev/charging-map)
